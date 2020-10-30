@@ -1,9 +1,11 @@
 # Design document
 Tietojenkäsittelytieteen kandidaatti
+
 Documentation language: English
 
 ## Algorithms and Data structures
 Map generation using [Binary space partitioning](http://www.roguebasin.com/index.php?title=Basic_BSP_Dungeon_generation).
+
 Object postitioning using [Depth-first search algorithm](https://en.wikipedia.org/wiki/Depth-first_search)
 
 ### Why BSP?
