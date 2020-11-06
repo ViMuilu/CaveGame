@@ -1,0 +1,235 @@
+
+textures.png
+size: 512,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+background/doorFrame
+  rotate: false
+  xy: 224, 22
+  size: 86, 94
+  orig: 86, 94
+  offset: 0, 0
+  index: -1
+background/floor
+  rotate: false
+  xy: 2, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+background/floor
+  rotate: false
+  xy: 312, 84
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+background/wall
+  rotate: false
+  xy: 2, 36
+  size: 220, 80
+  orig: 220, 80
+  offset: 0, 0
+  index: 1
+
+textures2.png
+size: 1024,256
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+characters/MC/Weapon/Sword_DownLeft
+  rotate: false
+  xy: 2, 134
+  size: 320, 64
+  orig: 320, 64
+  offset: 0, 0
+  index: -1
+characters/MC/Weapon/Sword_DownRight
+  rotate: false
+  xy: 2, 68
+  size: 320, 64
+  orig: 320, 64
+  offset: 0, 0
+  index: -1
+characters/MC/Weapon/Sword_UpLeft
+  rotate: false
+  xy: 324, 134
+  size: 320, 64
+  orig: 320, 64
+  offset: 0, 0
+  index: -1
+characters/MC/Weapon/Sword_UpRight
+  rotate: false
+  xy: 2, 2
+  size: 320, 64
+  orig: 320, 64
+  offset: 0, 0
+  index: -1
+
+textures3.png
+size: 1024,128
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+characters/MC/Character/CharacterDown
+  rotate: false
+  xy: 814, 36
+  size: 33, 32
+  orig: 33, 32
+  offset: 0, 0
+  index: 1
+characters/MC/Character/CharacterDown
+  rotate: false
+  xy: 814, 36
+  size: 33, 32
+  orig: 33, 32
+  offset: 0, 0
+  index: 3
+characters/MC/Character/CharacterDown
+  rotate: false
+  xy: 976, 70
+  size: 33, 32
+  orig: 33, 32
+  offset: 0, 0
+  index: 2
+characters/MC/Character/CharacterDown
+  rotate: false
+  xy: 814, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+characters/MC/Character/Character_DownLeft
+  rotate: false
+  xy: 164, 36
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_DownRight
+  rotate: false
+  xy: 326, 70
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_Left
+  rotate: false
+  xy: 164, 2
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_Right
+  rotate: false
+  xy: 294, 36
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollDown
+  rotate: false
+  xy: 456, 70
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollDownLeft
+  rotate: false
+  xy: 294, 2
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollDownRight
+  rotate: false
+  xy: 424, 36
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollLeft
+  rotate: false
+  xy: 586, 70
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollRight
+  rotate: false
+  xy: 424, 2
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollUp
+  rotate: false
+  xy: 554, 36
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollUpLeft
+  rotate: false
+  xy: 716, 70
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_RollUpRight
+  rotate: false
+  xy: 554, 2
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_SlashDownLeft
+  rotate: false
+  xy: 2, 70
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_SlashDownRight
+  rotate: false
+  xy: 2, 36
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_SlashUpLeft
+  rotate: false
+  xy: 164, 70
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_SlashUpRight
+  rotate: false
+  xy: 2, 2
+  size: 160, 32
+  orig: 160, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_Up
+  rotate: false
+  xy: 684, 36
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_UpLeft
+  rotate: false
+  xy: 846, 70
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
+characters/MC/Character/Character_UpRight
+  rotate: false
+  xy: 684, 2
+  size: 128, 32
+  orig: 128, 32
+  offset: 0, 0
+  index: -1
