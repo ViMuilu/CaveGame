@@ -12,6 +12,8 @@ Character can be moved using arrow keys.
 ## Weekly Reports
 [Week 2](https://github.com/ViMuilu/CaveGame/blob/main/documents/week2report.md)
 
+[Week 3](https://github.com/ViMuilu/CaveGame/blob/main/documents/week3report.md)
+
 ## Links to assets
 
 [Main character](https://gamekrazzy.itch.io/8-direction-top-down-character)
