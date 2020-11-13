@@ -74,116 +74,172 @@ filter: Nearest,Nearest
 repeat: none
 characters/MC/Character/CharacterDown
   rotate: false
-  xy: 814, 36
+  xy: 164, 2
   size: 33, 32
   orig: 33, 32
   offset: 0, 0
   index: 1
 characters/MC/Character/CharacterDown
   rotate: false
-  xy: 814, 36
+  xy: 164, 2
   size: 33, 32
   orig: 33, 32
   offset: 0, 0
   index: 3
 characters/MC/Character/CharacterDown
   rotate: false
-  xy: 976, 70
+  xy: 294, 36
   size: 33, 32
   orig: 33, 32
   offset: 0, 0
   index: 2
 characters/MC/Character/CharacterDown
   rotate: false
-  xy: 814, 2
+  xy: 397, 36
   size: 32, 32
   orig: 32, 32
   offset: 0, 0
   index: 4
-characters/MC/Character/Character_DownLeft
-  rotate: false
-  xy: 164, 36
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-characters/MC/Character/Character_DownRight
-  rotate: false
-  xy: 326, 70
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-characters/MC/Character/Character_Left
-  rotate: false
-  xy: 164, 2
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-characters/MC/Character/Character_Right
-  rotate: false
-  xy: 294, 36
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollDown
+characters/MC/Character/CharacterDownLeft
   rotate: false
   xy: 456, 70
-  size: 128, 32
-  orig: 128, 32
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollDownLeft
+  index: 1
+characters/MC/Character/CharacterDownLeft
   rotate: false
-  xy: 294, 2
-  size: 128, 32
-  orig: 128, 32
+  xy: 199, 2
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollDownRight
+  index: 2
+characters/MC/Character/CharacterDownLeft
   rotate: false
-  xy: 424, 36
-  size: 128, 32
-  orig: 128, 32
+  xy: 329, 36
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollLeft
+  index: 3
+characters/MC/Character/CharacterDownLeft
   rotate: false
-  xy: 586, 70
-  size: 128, 32
-  orig: 128, 32
+  xy: 490, 70
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollRight
+  index: 4
+characters/MC/Character/CharacterDownRight
   rotate: false
-  xy: 424, 2
-  size: 128, 32
-  orig: 128, 32
+  xy: 233, 2
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollUp
+  index: 1
+characters/MC/Character/CharacterDownRight
   rotate: false
-  xy: 554, 36
-  size: 128, 32
-  orig: 128, 32
+  xy: 363, 36
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollUpLeft
+  index: 2
+characters/MC/Character/CharacterDownRight
   rotate: false
-  xy: 716, 70
-  size: 128, 32
-  orig: 128, 32
+  xy: 524, 70
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
-characters/MC/Character/Character_RollUpRight
+  index: 3
+characters/MC/Character/CharacterDownRight
   rotate: false
-  xy: 554, 2
-  size: 128, 32
-  orig: 128, 32
+  xy: 267, 2
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
-  index: -1
+  index: 4
+characters/MC/Character/CharacterLeft
+  rotate: false
+  xy: 558, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+characters/MC/Character/CharacterLeft
+  rotate: false
+  xy: 301, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+characters/MC/Character/CharacterLeft
+  rotate: false
+  xy: 431, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+characters/MC/Character/CharacterLeft
+  rotate: false
+  xy: 592, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+characters/MC/Character/CharacterRight
+  rotate: false
+  xy: 335, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+characters/MC/Character/CharacterRight
+  rotate: false
+  xy: 465, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+characters/MC/Character/CharacterRight
+  rotate: false
+  xy: 626, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+characters/MC/Character/CharacterRight
+  rotate: false
+  xy: 369, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
+characters/MC/Character/CharacterUp
+  rotate: false
+  xy: 499, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 1
+characters/MC/Character/CharacterUp
+  rotate: false
+  xy: 660, 70
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 2
+characters/MC/Character/CharacterUp
+  rotate: false
+  xy: 403, 2
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 3
+characters/MC/Character/CharacterUp
+  rotate: false
+  xy: 533, 36
+  size: 32, 32
+  orig: 32, 32
+  offset: 0, 0
+  index: 4
 characters/MC/Character/Character_SlashDownLeft
   rotate: false
   xy: 2, 70
@@ -212,23 +268,16 @@ characters/MC/Character/Character_SlashUpRight
   orig: 160, 32
   offset: 0, 0
   index: -1
-characters/MC/Character/Character_Up
-  rotate: false
-  xy: 684, 36
-  size: 128, 32
-  orig: 128, 32
-  offset: 0, 0
-  index: -1
 characters/MC/Character/Character_UpLeft
   rotate: false
-  xy: 846, 70
+  xy: 164, 36
   size: 128, 32
   orig: 128, 32
   offset: 0, 0
   index: -1
 characters/MC/Character/Character_UpRight
   rotate: false
-  xy: 684, 2
+  xy: 326, 70
   size: 128, 32
   orig: 128, 32
   offset: 0, 0

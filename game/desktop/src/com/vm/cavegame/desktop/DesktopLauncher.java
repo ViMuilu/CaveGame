@@ -10,7 +10,8 @@ public class DesktopLauncher {
 		LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
 		config.title = "CaveGame";
                 config.resizable = true;
-                
+                config.height=360;
+                config.width = 640;
                 
                 // packs images, remove before final push           
                 TexturePacker.Settings sets = new TexturePacker.Settings();
@@ -20,6 +21,7 @@ public class DesktopLauncher {
                 sets.paddingX = 1;
                 sets.paddingY = 1;
                 TexturePacker.process("rawTextures", "./", "textures");
+
                 new LwjglApplication(new MainGame(), config);
 	}
 }

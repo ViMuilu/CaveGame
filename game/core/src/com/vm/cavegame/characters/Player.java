@@ -2,14 +2,18 @@
 package com.vm.cavegame.characters;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.physics.box2d.*;
+import com.badlogic.gdx.physics.box2d.Body;
+import com.badlogic.gdx.physics.box2d.BodyDef;
+import com.badlogic.gdx.physics.box2d.FixtureDef;
+import com.badlogic.gdx.physics.box2d.World;
 
 
-public class player extends Sprite{
+
+public class Player extends Sprite{
     public World world;
     public Body playerpBody;
     
-    public player (World world){
+    public Player (World world){
         this.world = world;
         setPlayer();
     }

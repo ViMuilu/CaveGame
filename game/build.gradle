@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    apply plugin: "eclipse"
+    
 
     version = '1.0'
     ext {
@@ -36,51 +36,56 @@ allprojects {
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }
     }
-}
 
-project(":desktop") {
-    apply plugin: "java-library"
-    apply plugin: 'java'
-    apply plugin: 'jacoco'
-    
-    dependencies {
-        implementation project(":core")
-        api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
-        api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
+
+    project(":desktop") {
+        apply plugin: "java-library"
+
+        dependencies {
+            implementation project(":core")
+            api "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+            api "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+            api "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
+            api "com.badlogicgames.gdx:gdx-tools:$gdxVersion"
         
-    }
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            html.enabled = true
-            
         }
+
+
     }
 
-    check.dependsOn jacocoTestReport
-}
-
-project(":core") {
-    apply plugin: "java-library"
-    
-    apply plugin: 'jacoco'
-
-    dependencies {
-        api "com.badlogicgames.gdx:gdx:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
-        api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
+    project(":core") {
+        apply plugin: 'java'
+        apply plugin: 'jacoco'
+        apply plugin: "java-library"
+        apply plugin: "checkstyle"
+        dependencies {
+            api "com.badlogicgames.gdx:gdx:$gdxVersion"
+            api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
+            api "com.badlogicgames.gdx:gdx-ai:$aiVersion"
         
-    }
-    jacocoTestReport {
-        reports {
-            xml.enabled = true
-            html.enabled = true
-            
         }
+        test {
+            finalizedBy jacocoTestReport
+        }
+        checkstyle {
+            toolVersion '8.17';    // your choice here
+        }
+        jacoco {
+            toolVersion = "0.7.7.201606060606"
+        }
+        jacocoTestReport {
+            reports {
+                xml.enabled = true
+                html.enabled = true
+                
+            }
+        }
+        
+        
+        check.dependsOn jacocoTestReport
     }
-
-    check.dependsOn jacocoTestReport
+    
 }
+
+
 
