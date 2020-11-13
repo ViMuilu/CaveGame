@@ -3,7 +3,7 @@ Objective is to create a procedurally generated cave game using Java.
 
 ## Game guide
 
-Character can be moved using arrow keys.
+Character can be moved using WASD or arrow keys.
 
 ## Documentation
 
