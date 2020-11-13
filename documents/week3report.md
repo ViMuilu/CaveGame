@@ -6,7 +6,7 @@ I spent time studyin how to improve character movement ands studied object colli
 
 ## How did the project advance?
 
-Improved character movement, changed camerea to follow player, added character animations and added a hit box for the character.
+Improved character movement, changed camera to follow player, added character animations and added a hit box for the character.
 
 Also added jacoco and checkstyle.
 
