@@ -4,6 +4,7 @@ Time spent on project 8 hours.
 ## What i did
 
 I mostly tried to find a good game development library. And after finding a suitable one i spent some time figuring out the basics of it. I also tried to find suitable assets for the game  which i also had to edit a bit.
+More info on the libgdx library can be found on the design document
 
 ## How did the project advance?
 
