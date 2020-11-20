@@ -9,6 +9,8 @@ import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.physics.box2d.World;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Map {
     private TiledMap map;
@@ -31,7 +33,7 @@ public class Map {
         TiledMapTileLayer layerWalls = new TiledMapTileLayer(20, 20, 32, 38);
         int ty = (int) (Math.random() * splitTiles.length);
         int tx = (int) (Math.random() * splitTiles[ty].length);
-        System.out.println("Tiles:"+splitTiles.length);
+        
         TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
         cell.setTile(new StaticTiledMapTile(splitTiles[0][0]));
         layerTiles.setCell(1, 0, cell);
@@ -55,10 +57,35 @@ public class Map {
         
         layers.add(layerTiles);
         layers.add(layerWalls);
+        int[][] ma = generateMap();
+        for (int[] is : ma) {
+            for (int i : is) {
+                System.out.print(i);
+            }
+            System.out.println("");
+        }
         return map;
     }
-    public String[][] generateMap(int rooms){
+    public int[][] generateMap(){
+        int[][] coordinatesForTiles = new int[120][120];
         // algo for bsp tree here
-        return  new String[0][0];
+        Node root = new Node(0, 0, 100, 100);
+        root.divide(root);
+        
+        // change list before final dl
+
+        ArrayList<Node> nodes = root.getNodes();
+        System.out.println("Room coordinates:");
+        for (Node node : nodes) {
+            System.out.println(node.x +":x y:" + node.y);
+            for (int i = node.x -3 ; i < node.x + 3; i++) {
+                for (int j = node.y -3; j < node.y + 3; j++) {
+                     coordinatesForTiles[i][j] = 1;
+                     
+                }
+            }
+           
+        }
+        return  coordinatesForTiles;
     }
 }

@@ -5,6 +5,8 @@ Objective is to create a procedurally generated cave game using Java.
 
 Character can be moved using WASD or arrow keys.
 
+Note: When launching the program it should create a array map to the output.
+
 ## Documentation
 
 [Design document](https://github.com/ViMuilu/CaveGame/blob/main/documents/design_document.md)
@@ -13,6 +15,8 @@ Character can be moved using WASD or arrow keys.
 [Week 2](https://github.com/ViMuilu/CaveGame/blob/main/documents/week2report.md)
 
 [Week 3](https://github.com/ViMuilu/CaveGame/blob/main/documents/week3report.md)
+
+[Week 4](https://github.com/ViMuilu/CaveGame/blob/main/documents/week4report.md)
 
 ## Links to assets
 
