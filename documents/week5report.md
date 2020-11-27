@@ -3,7 +3,7 @@ Time spent on project 10 hours.
 
 ## How did the project advance?
 
-I added melee animation and character sprint. Now the generated map can be rendered and adde code for that generates paths between rooms. I also slightly improved the algo for map generation.
+I added melee animation and character sprint. Now the generated map can be rendered and added code which generates paths between rooms. I also slightly improved the algo for map generation.
 
 ## Problems
 
