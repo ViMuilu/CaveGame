@@ -5,7 +5,7 @@ Objective is to create a procedurally generated cave game using Java.
 
 Character can be moved using WASD or arrow keys and character can melee by pressing Space. 
 
-Note: When launching the program it should create a array map to the output.
+Note: When launching the program it should create an array map to the output in which "1" are rooms and "0" are out of bounds areas.
 
 ## Documentation
 
