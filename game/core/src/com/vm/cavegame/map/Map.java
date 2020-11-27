@@ -20,7 +20,9 @@ public class Map {
     private Texture wallLeft;
     int[][] coordinatesFor = new int[120][120];
     public TiledMap renderMap(World world) {
-
+        Node root = new Node(10, 10, 200, 200, 0);
+        root.divide(root);
+        iterate(root);
         tiles = new Texture(Gdx.files.internal("floor_1.png"));
         wallRight = new Texture(Gdx.files.internal("wallRight.png"));
         wallLeft = new Texture(Gdx.files.internal("wallLeft.png"));
@@ -29,24 +31,34 @@ public class Map {
         TextureRegion[][] splitWallL = TextureRegion.split(wallLeft, 10, 152);
         map = new TiledMap();
         MapLayers layers = map.getLayers();
-
-        TiledMapTileLayer layerTiles = new TiledMapTileLayer(20, 20, 32, 32);
+        
+        TiledMapTileLayer layerTiles = new TiledMapTileLayer(120, 120, 32, 32);
         TiledMapTileLayer layerWalls = new TiledMapTileLayer(20, 20, 32, 38);
-        int ty = (int) (Math.random() * splitTiles.length);
-        int tx = (int) (Math.random() * splitTiles[ty].length);
-
+        
         TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
         cell.setTile(new StaticTiledMapTile(splitTiles[0][0]));
-        layerTiles.setCell(1, 0, cell);
-        layerTiles.setCell(1, 1, cell);
-        layerTiles.setCell(1, 2, cell);
-        layerTiles.setCell(1, 3, cell);
-        layerTiles.setCell(1, 4, cell);
-        layerTiles.setCell(2, 0, cell);
-        layerTiles.setCell(2, 1, cell);
-        layerTiles.setCell(2, 2, cell);
-        layerTiles.setCell(2, 3, cell);
-        layerTiles.setCell(2, 4, cell);
+        
+        
+        System.out.println("Room placement using Bfs");
+        int[][] ma = coordinatesFor;
+        for (int i = 0; i < 120; i++) {
+            for (int j = 0; j < 120; j++) {
+                if(ma[j][i] == 1){
+                    layerTiles.setCell(i, j, cell);
+                }
+            }
+        }
+        for (int[] is : ma) {
+            for (int i : is) {
+                System.out.print(i);
+            }
+            System.out.println("");
+        }
+        
+        
+        
+        
+       
         TiledMapTileLayer.Cell cell2 = new TiledMapTileLayer.Cell();
         cell2.setTile(new StaticTiledMapTile(splitWallR[0][0]));
         layerWalls.setCell(3, 0, cell2);
@@ -57,16 +69,9 @@ public class Map {
         layerWalls.setCell(1, 2, cell3);
         layers.add(layerTiles);
         layers.add(layerWalls);
-        generateMap();
         
-        System.out.println("Room placement using Bfs");
-        int[][] ma = coordinatesFor;
-        for (int[] is : ma) {
-            for (int i : is) {
-                System.out.print(i);
-            }
-            System.out.println("");
-        }
+        
+        
         return map;
     }
 
@@ -110,7 +115,7 @@ public class Map {
                     coordinatesFor[i][j] = 1;
                 }
             }
-            coordinatesFor[node.x][node.y] = node.index;
+            
             iterate(node.left);
             iterate(node.right);
 

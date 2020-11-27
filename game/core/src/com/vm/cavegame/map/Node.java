@@ -32,21 +32,22 @@ public class Node {
         // Change random before final dl
         Random rd = new Random();
         
-        if(current.x <= 10){
-            current.x += 15;
+        if(current.x < 10){
+            current.x += 20;
         }
-        if(current.y <= 10){
-            current.y+=15;
+        if(current.y < 10){
+            current.y+=20;
         }
         if(current.x >= 110){
-            current.x -= 15;
+            current.x -= 20;
         }
         if(current.y >= 110){
-            current.y -= 15;
+            current.y -= 20;
         }
         
         int divider =rd.nextInt((2 - 1) + 1) + 1;
         int size = 10;
+        int dist = 20;
         // add node to list if size is smaller than 5
         if(current.height - size < 5 || current.width - size < 5){
            
@@ -60,13 +61,13 @@ public class Node {
             index++;
             current.left = divide(new Node(current.x, current.y, current.width, size,index));
             index++;
-            current.right = divide(new Node(current.x, current.y + size, current.width, current.height - size,index));
+            current.right = divide(new Node(current.x, current.y + dist , current.width, current.height - size,index));
             
         } else {
             index++;
             current.left = divide(new Node(current.x, current.y,size , current.width,index));
             index++;
-            current.right = divide(new Node(current.x+ size, current.y ,current.height - size , current.width,index));
+            current.right = divide(new Node(current.x+ dist, current.y ,current.height - size , current.width,index));
 
         }
 

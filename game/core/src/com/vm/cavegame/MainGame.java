@@ -112,8 +112,8 @@ public class MainGame extends ApplicationAdapter {
         renderer = new OrthogonalTiledMapRenderer(map.renderMap(world));
 
         debugRenderer = new Box2DDebugRenderer();
-        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.
-                getHeight());
+        camera = new OrthographicCamera(Gdx.graphics.getWidth()*2 , Gdx.graphics.
+                getHeight()*2);
 
     }
 
@@ -235,6 +235,9 @@ public class MainGame extends ApplicationAdapter {
     private static float speed = 1f;
 
     private String playerMovement() {
+        if(Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
+            speed=10f;
+        }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
             idleAnimation = "Up";
             if (Gdx.input.isKeyPressed(Input.Keys.A) || Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
