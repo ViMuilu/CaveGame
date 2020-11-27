@@ -1,4 +1,3 @@
-
 package com.vm.cavegame.map;
 
 import com.badlogic.gdx.Gdx;
@@ -11,29 +10,31 @@ import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
 import com.badlogic.gdx.physics.box2d.World;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Stack;
 
 public class Map {
+
     private TiledMap map;
     private Texture tiles;
     private Texture wallRight;
     private Texture wallLeft;
-    public TiledMap renderMap(World world){
-        
+    int[][] coordinatesFor = new int[120][120];
+    public TiledMap renderMap(World world) {
+
         tiles = new Texture(Gdx.files.internal("floor_1.png"));
         wallRight = new Texture(Gdx.files.internal("wallRight.png"));
-        wallLeft =new Texture(Gdx.files.internal("wallLeft.png"));
+        wallLeft = new Texture(Gdx.files.internal("wallLeft.png"));
         TextureRegion[][] splitTiles = TextureRegion.split(tiles, 32, 32);
         TextureRegion[][] splitWallR = TextureRegion.split(wallRight, 10, 152);
         TextureRegion[][] splitWallL = TextureRegion.split(wallLeft, 10, 152);
         map = new TiledMap();
         MapLayers layers = map.getLayers();
 
-        
         TiledMapTileLayer layerTiles = new TiledMapTileLayer(20, 20, 32, 32);
         TiledMapTileLayer layerWalls = new TiledMapTileLayer(20, 20, 32, 38);
         int ty = (int) (Math.random() * splitTiles.length);
         int tx = (int) (Math.random() * splitTiles[ty].length);
-        
+
         TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
         cell.setTile(new StaticTiledMapTile(splitTiles[0][0]));
         layerTiles.setCell(1, 0, cell);
@@ -54,10 +55,12 @@ public class Map {
         cell3.setTile(new StaticTiledMapTile(splitWallL[0][0]));
         layerWalls.setCell(1, 0, cell3);
         layerWalls.setCell(1, 2, cell3);
-        
         layers.add(layerTiles);
         layers.add(layerWalls);
-        int[][] ma = generateMap();
+        generateMap();
+        
+        System.out.println("Room placement using Bfs");
+        int[][] ma = coordinatesFor;
         for (int[] is : ma) {
             for (int i : is) {
                 System.out.print(i);
@@ -66,26 +69,53 @@ public class Map {
         }
         return map;
     }
-    public int[][] generateMap(){
-        int[][] coordinatesForTiles = new int[120][120];
-        // algo for bsp tree here
-        Node root = new Node(0, 0, 100, 100);
-        root.divide(root);
-        
-        // change list before final dl
 
+    public int[][] generateMap() {
+        int[][] coordinatesForTiles = new int[120][120];
+
+        Node root = new Node(0, 0, 100, 100, 0);
+        root.divide(root);
+
+        for (Node node : root.nodes) {
+            System.out.println("Room: " + node.index + "x " + node.x + " y " + node.y);
+        }
+        System.out.println("iterate");
+        iterate(root);
+        // change list before final dl
         ArrayList<Node> nodes = root.getNodes();
-        System.out.println("Room coordinates:");
+        
         for (Node node : nodes) {
-            System.out.println(node.x +":x y:" + node.y);
-            for (int i = node.x -3 ; i < node.x + 3; i++) {
-                for (int j = node.y -3; j < node.y + 3; j++) {
-                     coordinatesForTiles[i][j] = 1;
-                     
+            
+            for (int i = node.x - 3; i < node.x + 3; i++) {
+                for (int j = node.y - 3; j < node.y + 3; j++) {
+                    coordinatesForTiles[i][j] = 1;
+
                 }
             }
-           
+
         }
-        return  coordinatesForTiles;
+        return coordinatesForTiles;
+    }
+    
+    public void iterate(Node node) {
+        if(node == null){
+            return;
+        }
+        if (!node.visited) {
+            node.visited = true;
+            System.out.println(node.index +"<- index " + node.x + ":x y:" + node.y);
+            
+            for (int j = node.y - 5; j < 5 + node.y; j++) {
+                for (int i = node.x - 5 ; i < 5  + node.x ; i++) {
+                    coordinatesFor[i][j] = 1;
+                }
+            }
+            coordinatesFor[node.x][node.y] = node.index;
+            iterate(node.left);
+            iterate(node.right);
+
+        }
+        
+
     }
 }

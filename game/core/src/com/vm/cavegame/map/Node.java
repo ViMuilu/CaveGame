@@ -14,57 +14,63 @@ public class Node {
     public Node right;
     // change before final dl
     ArrayList<Node> nodes;
+    boolean visited;
     int index;
     
-    public Node(int x, int y , int height, int width){
+    public Node(int x, int y , int height, int width, int index){
         this.x = x;
         this.y = y;
         this.height = height;
         this.width = width;
         nodes = new ArrayList<>();
-        index = 0;
-        
+        this.index = index;
+        visited = false;
         
     }
-    
-    public void divide(Node n){
+    // recursively crates all rooms/nodes
+    public Node divide(Node current){
         // Change random before final dl
         Random rd = new Random();
-        if(n.x <= 5){
-            n.x += 15;
+        
+        if(current.x <= 10){
+            current.x += 15;
         }
-        if(n.y <= 5){
-            n.y+=15;
+        if(current.y <= 10){
+            current.y+=15;
         }
-        if(n.x >= 395){
-            n.x -= 15;
+        if(current.x >= 110){
+            current.x -= 15;
         }
-        if(n.y >= 395){
-            n.y -= 15;
-        }
-        int divider =rd.nextInt((2 - 1) + 1) + 1;
-        int size = rd.nextInt((15 - 10) + 1) + 10;
-        // add node to list if size is smaller than 5
-        if(n.height - size < 5 || n.width - size < 5){
-           
-           nodes.add(new Node(n.x,n.y,n.height,n.width));
-           index++;
-           return;
+        if(current.y >= 110){
+            current.y -= 15;
         }
         
+        int divider =rd.nextInt((2 - 1) + 1) + 1;
+        int size = 10;
+        // add node to list if size is smaller than 5
+        if(current.height - size < 5 || current.width - size < 5){
+           
+           nodes.add(new Node(current.x,current.y,current.height,current.width,index));
+           
+           return current;
+        }
+        // remember to make room generation more random
         if(divider == 2) {
             // split horizontal
+            index++;
+            current.left = divide(new Node(current.x, current.y, current.width, size,index));
+            index++;
+            current.right = divide(new Node(current.x, current.y + size, current.width, current.height - size,index));
             
-            left = new Node(n.x, n.y, n.width, size);
-            right = new Node(n.x, n.y + size, n.width, n.height - size);
-
         } else {
-            left = new Node(n.x, n.y,size , n.width);
-            right = new Node(n.x+ size, n.y ,n.height - size , n.width);
+            index++;
+            current.left = divide(new Node(current.x, current.y,size , current.width,index));
+            index++;
+            current.right = divide(new Node(current.x+ size, current.y ,current.height - size , current.width,index));
 
         }
-        divide(left);
-        divide(right);
+
+        return current;
     }
     
     public ArrayList getNodes(){
