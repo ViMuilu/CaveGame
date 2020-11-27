@@ -1,11 +1,10 @@
-
 package com.vm.cavegame.map;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public class Node {
-    
+
     public int x;
     public int y;
     public int height;
@@ -16,8 +15,9 @@ public class Node {
     ArrayList<Node> nodes;
     boolean visited;
     int index;
-    
-    public Node(int x, int y , int height, int width, int index){
+    int[][] path;
+
+    public Node(int x, int y, int height, int width, int index) {
         this.x = x;
         this.y = y;
         this.height = height;
@@ -25,57 +25,55 @@ public class Node {
         nodes = new ArrayList<>();
         this.index = index;
         visited = false;
-        
+
     }
-    // recursively crates all rooms/nodes
-    public Node divide(Node current){
+
+    // recursively creates all rooms/nodes
+    public Node divide(Node current) {
         // Change random before final dl
         Random rd = new Random();
         
-        if(current.x < 10){
-            current.x += 20;
-        }
-        if(current.y < 10){
-            current.y+=20;
-        }
-        if(current.x >= 110){
+        if (current.x >= 110) {
             current.x -= 20;
         }
-        if(current.y >= 110){
+        if (current.y >= 110) {
             current.y -= 20;
         }
-        
-        int divider =rd.nextInt((2 - 1) + 1) + 1;
+        //divider is used to decide which way the next room will spawn
+        int divider = rd.nextInt((2 - 1) + 1) + 1;
         int size = 10;
         int dist = 20;
-        // add node to list if size is smaller than 5
-        if(current.height - size < 5 || current.width - size < 5){
-           
-           nodes.add(new Node(current.x,current.y,current.height,current.width,index));
-           
-           return current;
+        // return when node height and width is smaller then 5 this becomes more useful when room sizes are randomized
+        if (current.height - size < 5 || current.width - size < 5) {
+
+            nodes.add(new Node(current.x, current.y, current.height, current.width, index));
+
+            return current;
         }
+
         // remember to make room generation more random
-        if(divider == 2) {
+        if (divider == 2) {
             // split horizontal
+
             index++;
-            current.left = divide(new Node(current.x, current.y, current.width, size,index));
-            index++;
-            current.right = divide(new Node(current.x, current.y + dist , current.width, current.height - size,index));
-            
+         
+            current.right = divide(new Node(current.x, current.y + dist, current.width, current.height - size, index));
+
         } else {
+            //split vertical
+
             index++;
-            current.left = divide(new Node(current.x, current.y,size , current.width,index));
-            index++;
-            current.right = divide(new Node(current.x+ dist, current.y ,current.height - size , current.width,index));
+          
+            current.right = divide(new Node(current.x + dist, current.y, current.height - size, current.width, index));
 
         }
 
         return current;
     }
-    
-    public ArrayList getNodes(){
+
+    public ArrayList getNodes() {
         return nodes;
     }
-    
+
+ 
 }

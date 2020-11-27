@@ -41,15 +41,12 @@ public class MainGame extends ApplicationAdapter {
     private Animation<TextureRegion> meleeAnimationRight;
     private Animation<TextureRegion> meleeAnimationIdleFrame;
     private String idleAnimation;
-    private String meleeAnimation;
     private TiledMapRenderer renderer;
     private World world;
     private Body body;
     private SpriteBatch batch;
     private TextureAtlas atlas;
     private Sprite player;
-    private float playerX;
-    private float playerY;
     private OrthographicCamera camera;
     private float moveAmount = 1.0f;
     private final float PIXELS_TO_METERS = 100f;
@@ -57,6 +54,7 @@ public class MainGame extends ApplicationAdapter {
     private float elapsedTime = 0;
     private boolean drawSprite = true;
     private Matrix4 debugMatrix;
+    private static float speed = 1f;
 
     @Override
     public void create() {
@@ -66,7 +64,9 @@ public class MainGame extends ApplicationAdapter {
         batch = new SpriteBatch();
         atlas = new TextureAtlas("textures.atlas");
         player = new Sprite(atlas.findRegions("characters/MC/Character/CharacterDown").get(0));
-        player.setPosition(1, 1);
+        player.setPosition(200, 200);
+
+        //gets frames from texture atlas and makes them in to a loop
         runningAnimationUp = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Character/CharacterUp"), PlayMode.LOOP);
         runningAnimationDown = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Character/CharacterDown"), PlayMode.LOOP);
         runningAnimationLeft = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Character/CharacterLeft"), PlayMode.LOOP);
@@ -78,14 +78,14 @@ public class MainGame extends ApplicationAdapter {
         idleAnimationLeft = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Character/CharacterLeft").get(0));
 
         meleeAnimationIdleFrame = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordBlank").get(0));
-        meleeAnimationUp = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordUp"),PlayMode.LOOP);
-        meleeAnimationDown = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordDown"),PlayMode.LOOP);
-        meleeAnimationLeft = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordLeft"),PlayMode.LOOP);
-        meleeAnimationRight = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordRight"),PlayMode.LOOP);
+        meleeAnimationUp = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordUp"), PlayMode.LOOP);
+        meleeAnimationDown = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordDown"), PlayMode.LOOP);
+        meleeAnimationLeft = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordLeft"), PlayMode.LOOP);
+        meleeAnimationRight = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Weapon/SwordRight"), PlayMode.LOOP);
         idleAnimation = "Down";
 
         world = new World(new Vector2(0f, 0f), true);
-
+        //sets up player hitbox
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         bodyDef.position.set((player.getX() + player.getWidth() / 2)
@@ -106,26 +106,27 @@ public class MainGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, (w / h) * 320, 320);
         camera.update();
-
         Map map = new Map();
-
+        
         renderer = new OrthogonalTiledMapRenderer(map.renderMap(world));
 
         debugRenderer = new Box2DDebugRenderer();
-        camera = new OrthographicCamera(Gdx.graphics.getWidth()*2 , Gdx.graphics.
-                getHeight()*2);
+        camera = new OrthographicCamera(Gdx.graphics.getWidth() , Gdx.graphics.
+                getHeight() );
 
     }
 
     @Override
     public void render() {
+        
         elapsedTime += Gdx.graphics.getDeltaTime() / 7;
-        Gdx.gl.glClearColor(1, 1, 1, 1);
+        Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
-        player.setPosition(playerX, playerY);
+        
         renderer.setView(camera);
         renderer.render();
+        
         Animation<TextureRegion> animation = null;
         Animation<TextureRegion> animationSword = meleeAnimationIdleFrame;
         float xMelee = 0;
@@ -148,7 +149,7 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() - 5;
                 yMelee = player.getY() - 10;
                 animationSword = meleeAnimationDown;
-                
+
             }
         } else if (idleAnimation.equals("Up")) {
             animation = idleAnimationUp;
@@ -156,7 +157,7 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() + 5;
                 yMelee = player.getY() + 10;
                 animationSword = meleeAnimationUp;
-                
+
             }
         } else if (idleAnimation.equals("Left")) {
             animation = idleAnimationLeft;
@@ -164,7 +165,7 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() - 10;
                 yMelee = player.getY() + 5;
                 animationSword = meleeAnimationLeft;
-                
+
             }
         } else if (idleAnimation.equals("Right")) {
             animation = idleAnimationRight;
@@ -172,7 +173,6 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() + 10;
                 yMelee = player.getY() - 5;
                 animationSword = meleeAnimationRight;
-                
 
             }
         }
@@ -182,7 +182,6 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() + 5;
                 yMelee = player.getY() + 10;
                 animationSword = meleeAnimationUp;
-                
 
             }
         } else if (playerMovement().equals("Down")) {
@@ -191,7 +190,6 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() - 5;
                 yMelee = player.getY() - 10;
                 animationSword = meleeAnimationDown;
-                
 
             }
         } else if (playerMovement().equals("Left")) {
@@ -200,7 +198,6 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() - 10;
                 yMelee = player.getY() + 5;
                 animationSword = meleeAnimationLeft;
-               
 
             }
         } else if (playerMovement().equals("Right")) {
@@ -209,7 +206,6 @@ public class MainGame extends ApplicationAdapter {
                 xMelee = player.getX() + 10;
                 yMelee = player.getY() - 5;
                 animationSword = meleeAnimationRight;
-             
 
             }
         }
@@ -232,11 +228,12 @@ public class MainGame extends ApplicationAdapter {
         world.dispose();
 
     }
-    private static float speed = 1f;
 
     private String playerMovement() {
-        if(Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)){
-            speed=10f;
+        if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
+            speed = 3f;
+        } else {
+            speed = 1f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
             idleAnimation = "Up";
