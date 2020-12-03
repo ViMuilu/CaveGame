@@ -88,6 +88,7 @@ public class MainGame extends ApplicationAdapter {
         //sets up player hitbox
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
+        
         bodyDef.position.set((player.getX() + player.getWidth() / 2)
                 / PIXELS_TO_METERS,
                 (player.getY() + player.getHeight() / 2) / PIXELS_TO_METERS);
@@ -98,7 +99,7 @@ public class MainGame extends ApplicationAdapter {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
-        fixtureDef.density = 0.1f;
+        fixtureDef.density = 0f;
 
         body.createFixture(fixtureDef);
         shape.dispose();
@@ -216,8 +217,9 @@ public class MainGame extends ApplicationAdapter {
                 player.getOriginY(),
                 player.getWidth(), player.getHeight(), player.getScaleX(), player.
                 getScaleY(), player.getRotation());
-        batch.draw(animationSword.getKeyFrame(elapsedTime / 2, true), xMelee, yMelee);
+        batch.draw(animationSword.getKeyFrame(elapsedTime /2, true), xMelee, yMelee);
         batch.end();
+        // remove debug to make hitboxes invicible
         debugRenderer.render(world, debugMatrix);
     }
 

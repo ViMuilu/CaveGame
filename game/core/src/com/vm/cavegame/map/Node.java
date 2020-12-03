@@ -39,15 +39,12 @@ public class Node {
         if (current.y >= 110) {
             current.y -= 20;
         }
-        //divider is used to decide which way the next room will spawn
+        //divider is used to decide which way the next room is rendered
         int divider = rd.nextInt((2 - 1) + 1) + 1;
         int size = 10;
         int dist = 20;
         // return when node height and width is smaller then 5 this becomes more useful when room sizes are randomized
         if (current.height - size < 5 || current.width - size < 5) {
-
-            nodes.add(new Node(current.x, current.y, current.height, current.width, index));
-
             return current;
         }
 
