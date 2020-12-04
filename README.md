@@ -11,6 +11,8 @@ Character can sprint by holding left Shift.
 
 Note: When launching the program it should create an array map to the output in which "1" are rooms and "0" are out of bounds areas.
 
+Note: wall hitbox code needs some fine tuning and thus the boxes don't spwan correctly.
+
 ## Documentation
 
 [Design document](https://github.com/ViMuilu/CaveGame/blob/main/documents/design_document.md)
@@ -23,6 +25,8 @@ Note: When launching the program it should create an array map to the output in 
 [Week 4](https://github.com/ViMuilu/CaveGame/blob/main/documents/week4report.md)
 
 [Week 5](https://github.com/ViMuilu/CaveGame/blob/main/documents/week5report.md)
+
+[Week 6](https://github.com/ViMuilu/CaveGame/blob/main/documents/week6report.md)
 
 ## Links to assets
 

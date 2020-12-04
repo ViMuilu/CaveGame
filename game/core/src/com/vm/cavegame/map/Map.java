@@ -1,4 +1,4 @@
-package com.vm.cavegame.map;
+package vm.cavegame.map;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -19,11 +19,11 @@ public class Map {
     private Texture tiles;
     private Texture wallRight;
     private Texture wallLeft;
-    private int[][] coordinatesForMapTiles = new int[240][240];
+    public int[][] coordinatesForMapTiles;
     private Body body;
 
     public TiledMap renderMap(World world) {
-
+        coordinatesForMapTiles = new int[240][240];
         Node root = new Node(10, 10, 200, 240, 0);
         root.divide(root);
         iterate(root);
@@ -55,7 +55,7 @@ public class Map {
         int[][] ma = coordinatesForMapTiles;
         for (int i = 0; i < 120; i++) {
             for (int j = 0; j < 120; j++) {
-                if (ma[j][i] == 1) {
+                if (ma[j][i] == 1|| ma[j][i] == 6 || ma[j][i] == 7 ) {
                     layerTiles.setCell(i, j, cell);
                 }
                 if (ma[j][i] == 2 || ma[j][i] == 3 || ma[j][i] == 4 || ma[j][i] == 5) {
@@ -126,8 +126,8 @@ public class Map {
             if (node.y == node.right.y) {
                 for (int j = node.x; j < node.right.x; j++) {
 
-                    coordinatesForMapTiles[j][node.y] = 1;
-                    coordinatesForMapTiles[j][node.y - 1] = 1;
+                    coordinatesForMapTiles[j][node.y] = 6;
+                    coordinatesForMapTiles[j][node.y - 1] = 7;
                     if (coordinatesForMapTiles[j][node.y - 2] != 1 && coordinatesForMapTiles[j][node.y + 1] != 1) {
                         coordinatesForMapTiles[j][node.y - 2] = 2;
                         coordinatesForMapTiles[j][node.y + 1] = 3;
@@ -136,8 +136,8 @@ public class Map {
             } else if (node.x == node.right.x) {
                 for (int j = node.y; j < node.right.y; j++) {
 
-                    coordinatesForMapTiles[node.x - 1][j] = 1;
-                    coordinatesForMapTiles[node.x][j] = 1;
+                    coordinatesForMapTiles[node.x - 1][j] = 6;
+                    coordinatesForMapTiles[node.x][j] = 6;
 
                     if (coordinatesForMapTiles[node.x - 2][j] != 1 && coordinatesForMapTiles[node.x + 1][j] != 1) {
                         coordinatesForMapTiles[node.x - 2][j] = 4;

@@ -1,4 +1,4 @@
-package com.vm.cavegame;
+package vm.cavegame;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -23,7 +23,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
 
-import com.vm.cavegame.map.Map;
+import vm.cavegame.map.Map;
 
 public class MainGame extends ApplicationAdapter {
 

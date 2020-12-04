@@ -1,4 +1,4 @@
-package com.vm.cavegame.map;
+package vm.cavegame.map;
 
 import java.util.ArrayList;
 import java.util.Random;
