@@ -6,7 +6,9 @@
 
 When running jUnit tests remember to comment out lines 35-42, 44-54 and 58-81 in map class this has to be done because I wasn’t able to make these texture readers work in the test class. 
 
-Jacoco cand be generated inside netbeans by right clicking game:core folder and then gradle run and gradle command jacocotestreport.
+First run the test in game:core.Then Jacoco cand be generated inside netbeans by right clicking game:core folder and then gradle run and gradle command jacocotestreport.
+The report is in core/build/jacocoHTML
+
 
 There are only two tests because the algorithm generates random results thus making testing difficult.
 

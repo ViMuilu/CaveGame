@@ -30,7 +30,7 @@ The bsp algorithm node generation could most likely be done using recursion and 
 
 I used ThreadLocalRandom in node class insted of making my own random class because java random doesn't work in a multithreded enviroment and i expected that a random class of my own would have similiar porblems so I chose to use ThreadLocalRandom.
 
-
+The program sometimes generates corridors throug rooms. This only happens when the root node x and y values are large when those values are 30 and 30 this happens maybe every 10 runs or so. This is most likely a scaling issue it is diificult to find appropriate values for the root node and min-and maxsize.
 
 ## Sources
 

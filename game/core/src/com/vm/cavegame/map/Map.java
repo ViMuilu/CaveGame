@@ -48,7 +48,7 @@ public class Map {
      */
     public TiledMap setMapTextures(World world) {
         coordinatesForMapTiles = new int[80][80];
-        // gets textures and turns them into texture region which are then turned placed on layers
+//         gets textures and turns them into texture region which are then turned placed on layers
         tiles = new Texture(Gdx.files.internal("floor_1.png"));
         Texture til = new Texture(Gdx.files.internal("floor_2.png"));
         wallRight = new Texture(Gdx.files.internal("wallRight.png"));

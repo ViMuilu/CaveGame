@@ -65,7 +65,7 @@ public class MapTests {
 
         }
         System.out.println(amountOfRoomsNotDrawn);
-        assertEquals("Not all rooms were drawn", amountOfRoomsNotDrawn != 0, false);
+        assertEquals("Not all rooms were drawn",false, amountOfRoomsNotDrawn != 0 );
     }
 
     /**
@@ -99,7 +99,7 @@ public class MapTests {
             }
 
         }
-        assertEquals("Not all rooms have corridors", amountOfRoomsWithoutCorridors, true);
+        assertEquals("Not all rooms have corridors",true ,amountOfRoomsWithoutCorridors );
     }
 
 }
