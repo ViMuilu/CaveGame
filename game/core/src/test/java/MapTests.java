@@ -69,7 +69,7 @@ public class MapTests {
         for (Room room : rooms) {
             // checks if left and right sides of room has a corridor
             // -1 because rooms are genrated  i<room.getHeight();
-            for (int i = room.getY(); i <= room.getY() + room.getHeight(); i++) {
+            for (int i = room.getY(); i < room.getY() + room.getHeight(); i++) {
                 amountOfRoomsWithoutCorridors = true;
                 if (mapTiles[room.getX() - 1][i] == 1) {
                     break;
@@ -80,7 +80,7 @@ public class MapTests {
                 amountOfRoomsWithoutCorridors = false;
             }
             // checks if Top and bottom sides of room has a corridor
-            for (int i = room.getX(); i <= room.getX() + room.getWidth(); i++) {
+            for (int i = room.getX(); i < room.getX() + room.getWidth(); i++) {
                 amountOfRoomsWithoutCorridors = true;
                 if (mapTiles[i][room.getY() - 1] == 1) {
                     break;
