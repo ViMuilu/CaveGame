@@ -1,7 +1,7 @@
 # Tesintg document
 
 ## Unit testing
-[Code coverage](https://github.com/ViMuilu/CaveGame/blob/main/documents/codecov.png)
+![Code coverage](https://github.com/ViMuilu/CaveGame/blob/main/documents/codecov.png)
 
 
 When running jUnit tests remember to comment out lines 35-42, 44-54 and 58-81 in map class this has to be done because I wasn’t able to make these texture readers work in the test class. 
