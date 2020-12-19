@@ -12,6 +12,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Matrix4;
@@ -25,6 +26,10 @@ import com.badlogic.gdx.physics.box2d.World;
 
 import vm.cavegame.map.Map;
 
+/**
+ *
+ * @author ville
+ */
 public class MainGame extends ApplicationAdapter {
 
     private Animation<TextureRegion> runningAnimationUp;
@@ -55,16 +60,19 @@ public class MainGame extends ApplicationAdapter {
     private boolean drawSprite = true;
     private Matrix4 debugMatrix;
     private static float speed = 1f;
-
+    private static float zoom = 0f;
+  
+    /**
+     *Creates all necessary objects before rendering
+     */
     @Override
     public void create() {
         float w = Gdx.graphics.getWidth();
         float h = Gdx.graphics.getHeight();
-
+        
         batch = new SpriteBatch();
         atlas = new TextureAtlas("textures.atlas");
-        player = new Sprite(atlas.findRegions("characters/MC/Character/CharacterDown").get(0));
-        player.setPosition(200, 200);
+        
 
         //gets frames from texture atlas and makes them in to a loop
         runningAnimationUp = new Animation<TextureRegion>(0.033f, atlas.findRegions("characters/MC/Character/CharacterUp"), PlayMode.LOOP);
@@ -85,10 +93,14 @@ public class MainGame extends ApplicationAdapter {
         idleAnimation = "Down";
 
         world = new World(new Vector2(0f, 0f), true);
+        Map map = new Map();
+        TiledMap tm= map.setMapTextures(world);
+        player = new Sprite(atlas.findRegions("characters/MC/Character/CharacterDown").get(0));
+        player.setPosition(map.getPlayerX(), map.getPlayerY());
         //sets up player hitbox
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        
+
         bodyDef.position.set((player.getX() + player.getWidth() / 2)
                 / PIXELS_TO_METERS,
                 (player.getY() + player.getHeight() / 2) / PIXELS_TO_METERS);
@@ -107,27 +119,30 @@ public class MainGame extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, (w / h) * 320, 320);
         camera.update();
-        Map map = new Map();
-        
-        renderer = new OrthogonalTiledMapRenderer(map.renderMap(world));
+       
 
+        renderer = new OrthogonalTiledMapRenderer(tm);
+        
         debugRenderer = new Box2DDebugRenderer();
-        camera = new OrthographicCamera(Gdx.graphics.getWidth() , Gdx.graphics.
-                getHeight() );
+        camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.
+                getHeight());
 
     }
 
+    /**
+     * Renders objects
+     */
     @Override
     public void render() {
-        
+
         elapsedTime += Gdx.graphics.getDeltaTime() / 7;
         Gdx.gl.glClearColor(0, 0, 0, 0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         camera.update();
-        
+
         renderer.setView(camera);
         renderer.render();
-        
+
         Animation<TextureRegion> animation = null;
         Animation<TextureRegion> animationSword = meleeAnimationIdleFrame;
         float xMelee = 0;
@@ -210,19 +225,24 @@ public class MainGame extends ApplicationAdapter {
 
             }
         }
+
         camera.position.set(player.getX(), player.getY(), 0);
+        camera.zoom += zoom;
         camera.update();
 
         batch.draw(animation.getKeyFrame(elapsedTime, true), player.getX(), player.getY(), player.getOriginX(),
                 player.getOriginY(),
                 player.getWidth(), player.getHeight(), player.getScaleX(), player.
                 getScaleY(), player.getRotation());
-        batch.draw(animationSword.getKeyFrame(elapsedTime /2, true), xMelee, yMelee);
+        batch.draw(animationSword.getKeyFrame(elapsedTime / 2, true), xMelee, yMelee);
         batch.end();
         // remove debug to make hitboxes invicible
         debugRenderer.render(world, debugMatrix);
     }
 
+    /**
+     *Disposes batch, atlas and world when program is closed
+     */
     @Override
     public void dispose() {
         batch.dispose();
@@ -230,12 +250,18 @@ public class MainGame extends ApplicationAdapter {
         world.dispose();
 
     }
-
     private String playerMovement() {
         if (Gdx.input.isKeyPressed(Input.Keys.SHIFT_LEFT)) {
             speed = 3f;
         } else {
             speed = 1f;
+        }
+        if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
+            zoom = 0.3f;
+        } else if (Gdx.input.isKeyPressed(Input.Keys.X)) {
+            zoom = -0.3f;
+        } else {
+            zoom = 0f;
         }
         if (Gdx.input.isKeyPressed(Input.Keys.W) || Gdx.input.isKeyPressed(Input.Keys.UP)) {
             idleAnimation = "Up";

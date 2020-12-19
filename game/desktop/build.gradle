@@ -37,3 +37,15 @@ task dist(type: Jar) {
 dist.dependsOn classes
 
 
+task fatJar(type: Jar) {
+  manifest {
+    attributes 'Main-Class': 'com.yourpackage.Main'
+  }
+  archiveClassifier = "all"
+  from {
+    configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+  with jar
+}
+
