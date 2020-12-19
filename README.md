@@ -5,6 +5,8 @@ Objective is to create a procedurally generated cave game using Java.
 
 No .jar file since i didn't manage to find a way to generate .jar out of multiple project files.
 
+If textures aren't loading go to desktopLauncher class and remove the comments from the code.
+
 To run the program in your IDE navigate to game:desktop directory and open DesktopLauncher and run the program from the IDE.
 
 Character can be moved using WASD or arrow keys.
