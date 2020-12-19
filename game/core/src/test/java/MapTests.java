@@ -35,15 +35,7 @@ public class MapTests {
      *
      */
     @Before
-    public void setUp() {
-        LwjglApplicationConfiguration config = new LwjglApplicationConfiguration();
-        config.title = "CaveGame";
-        config.resizable = true;
-        config.height = 360;
-        config.width = 640;
-
-        new LwjglApplication(new MainGame(), config);
-
+    public void setUp() {        
         map = new Map();
 
         world = new World(new Vector2(0f, 0f), true);
@@ -73,26 +65,27 @@ public class MapTests {
      */
     @Test
     public void checkThatRoomsHaveCorridors() {
-        boolean amountOfRoomsWithoutCorridors = true;
+        boolean amountOfRoomsWithoutCorridors = false;
         for (Room room : rooms) {
             // checks if left and right sides of room has a corridor
-            for (int i = room.getY(); i < room.getY() + room.getHeight(); i++) {
+            // -1 because rooms are genrated  i<room.getHeight();
+            for (int i = room.getY(); i <= room.getY() + room.getHeight(); i++) {
                 amountOfRoomsWithoutCorridors = true;
                 if (mapTiles[room.getX() - 1][i] == 1) {
                     break;
                 }
-                if (mapTiles[room.getX() + room.getWidth() + 1][i] == 1) {
+                if (mapTiles[room.getX() + room.getWidth()-1][i] == 1) {
                     break;
                 }
                 amountOfRoomsWithoutCorridors = false;
             }
             // checks if Top and bottom sides of room has a corridor
-            for (int i = room.getX(); i < room.getX() + room.getWidth() + 1; i++) {
+            for (int i = room.getX(); i <= room.getX() + room.getWidth(); i++) {
                 amountOfRoomsWithoutCorridors = true;
                 if (mapTiles[i][room.getY() - 1] == 1) {
                     break;
                 }
-                if (mapTiles[i][room.getY() + room.getHeight() + 1] == 1) {
+                if (mapTiles[i][room.getY() + room.getHeight()-1] == 1) {
                     break;
                 }
                 amountOfRoomsWithoutCorridors = false;

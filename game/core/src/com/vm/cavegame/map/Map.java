@@ -49,53 +49,53 @@ public class Map {
     public TiledMap setMapTextures(World world) {
         coordinatesForMapTiles = new int[80][80];
 //         gets textures and turns them into texture region which are then turned placed on layers
-        tiles = new Texture(Gdx.files.internal("floor_1.png"));
-        Texture til = new Texture(Gdx.files.internal("floor_2.png"));
-        wallRight = new Texture(Gdx.files.internal("wallRight.png"));
-        wallLeft = new Texture(Gdx.files.internal("wallLeft.png"));
-        TextureRegion[][] splitTiles = TextureRegion.split(tiles, 32, 32);
-        TextureRegion[][] splitTi = TextureRegion.split(til, 32, 32);
-        TextureRegion[][] splitWallR = TextureRegion.split(wallRight, 10, 152);
-        TextureRegion[][] splitWallL = TextureRegion.split(wallLeft, 10, 152);
+//        tiles = new Texture(Gdx.files.internal("floor_1.png"));
+//        Texture til = new Texture(Gdx.files.internal("floor_2.png"));
+//        wallRight = new Texture(Gdx.files.internal("wallRight.png"));
+//        wallLeft = new Texture(Gdx.files.internal("wallLeft.png"));
+//        TextureRegion[][] splitTiles = TextureRegion.split(tiles, 32, 32);
+//        TextureRegion[][] splitTi = TextureRegion.split(til, 32, 32);
+//        TextureRegion[][] splitWallR = TextureRegion.split(wallRight, 10, 152);
+//        TextureRegion[][] splitWallL = TextureRegion.split(wallLeft, 10, 152);
         map = new TiledMap();
-        MapLayers layers = map.getLayers();
-        TiledMapTileLayer layerTiles = new TiledMapTileLayer(120, 120, 32, 32);
-        TiledMapTileLayer layerWalls = new TiledMapTileLayer(120, 120, 32, 32);
-        TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
-        cell.setTile(new StaticTiledMapTile(splitTiles[0][0]));
-        TiledMapTileLayer.Cell cell2 = new TiledMapTileLayer.Cell();
-        cell2.setTile(new StaticTiledMapTile(splitWallR[0][0]));
-        TiledMapTileLayer.Cell cell3 = new TiledMapTileLayer.Cell();
-        cell3.setTile(new StaticTiledMapTile(splitWallL[0][0]));
-        TiledMapTileLayer.Cell cell4 = new TiledMapTileLayer.Cell();
-        cell4.setTile(new StaticTiledMapTile(splitTi[0][0]));
+//        MapLayers layers = map.getLayers();
+//        TiledMapTileLayer layerTiles = new TiledMapTileLayer(120, 120, 32, 32);
+//        TiledMapTileLayer layerWalls = new TiledMapTileLayer(120, 120, 32, 32);
+//        TiledMapTileLayer.Cell cell = new TiledMapTileLayer.Cell();
+//        cell.setTile(new StaticTiledMapTile(splitTiles[0][0]));
+//        TiledMapTileLayer.Cell cell2 = new TiledMapTileLayer.Cell();
+//        cell2.setTile(new StaticTiledMapTile(splitWallR[0][0]));
+//        TiledMapTileLayer.Cell cell3 = new TiledMapTileLayer.Cell();
+//        cell3.setTile(new StaticTiledMapTile(splitWallL[0][0]));
+//        TiledMapTileLayer.Cell cell4 = new TiledMapTileLayer.Cell();
+//        cell4.setTile(new StaticTiledMapTile(splitTi[0][0]));
         Node root = new Node(0, 0, 60, 60);
         generateMap(root);
         // sets map tiles
-        int[][] ma = coordinatesForMapTiles;
-        for (int i = 0; i < 60; i++) {
-            for (int j = 0; j < 60; j++) {
-                if (ma[j][i] == 1 || ma[j][i] == 6 || ma[j][i] == 7) {
-                    layerTiles.setCell(i, j, cell);
-                }
-                if (ma[j][i] == 2 || ma[j][i] == 3 || ma[j][i] == 4 || ma[j][i] == 5) {
-                    layerWalls.setCell(i, j, cell4);
-                    BodyDef bodyDef = new BodyDef();
-                    bodyDef.type = BodyDef.BodyType.StaticBody;
-                    bodyDef.position.set((i) / 3f, (j) / 3f);
-                    body = world.createBody(bodyDef);
-                    PolygonShape shape = new PolygonShape();
-                    shape.setAsBox(32 / 2f / 100f, 32 / 2f / 100f);
-                    FixtureDef fixtureDef = new FixtureDef();
-                    fixtureDef.shape = shape;
-                    fixtureDef.density = 0f;
-                    body.createFixture(fixtureDef);
-                    shape.dispose();
-                }
-            }
-        }
-        layers.add(layerTiles);
-        layers.add(layerWalls);
+//        int[][] ma = coordinatesForMapTiles;
+//        for (int i = 0; i < 60; i++) {
+//            for (int j = 0; j < 60; j++) {
+//                if (ma[j][i] == 1 || ma[j][i] == 6 || ma[j][i] == 7) {
+//                    layerTiles.setCell(i, j, cell);
+//                }
+//                if (ma[j][i] == 2 || ma[j][i] == 3 || ma[j][i] == 4 || ma[j][i] == 5) {
+//                    layerWalls.setCell(i, j, cell4);
+//                    BodyDef bodyDef = new BodyDef();
+//                    bodyDef.type = BodyDef.BodyType.StaticBody;
+//                    bodyDef.position.set((i) / 3f, (j) / 3f);
+//                    body = world.createBody(bodyDef);
+//                    PolygonShape shape = new PolygonShape();
+//                    shape.setAsBox(32 / 2f / 100f, 32 / 2f / 100f);
+//                    FixtureDef fixtureDef = new FixtureDef();
+//                    fixtureDef.shape = shape;
+//                    fixtureDef.density = 0f;
+//                    body.createFixture(fixtureDef);
+//                    shape.dispose();
+//                }
+//            }
+//        }
+//        layers.add(layerTiles);
+//        layers.add(layerWalls);
 
         return map;
     }
